@@ -9,6 +9,11 @@ class PostListView(ListView):
     model = Post
     template_name = 'blog/post_list.html'
 
+    def get_queryset(self):
+        posts = super().get_queryset()
+
+        return posts.order_by('-updated_at')
+
 class PostDetailView(DetailView):
     model = Post
     template_name = 'blog/post_detail.html'
