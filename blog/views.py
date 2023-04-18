@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
@@ -11,3 +12,11 @@ class PostListView(ListView):
 class PostDetailView(DetailView):
     model = Post
     template_name = 'blog/post_detail.html'
+
+    def get_object(self, queryset=None):
+        post = super().get_object(queryset)
+        #公開済みorログイン時にアクセス可能
+        if post.is_published or self.request.user.is_authenticated:
+            return post
+        else:
+            return Http404
