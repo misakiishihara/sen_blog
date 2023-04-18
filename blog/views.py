@@ -11,7 +11,7 @@ class PostListView(ListView):
 
     def get_queryset(self):
         posts = super().get_queryset()
-
+        #postsを降順に並び替える
         return posts.order_by('-updated_at')
 
 class PostDetailView(DetailView):
