@@ -1,6 +1,16 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            main
+        </div>
+        <div class="col-3">
+            side
+        </div>
+    </div>
+</div>
 
 {% for post in object_list %}
 {% if post.is_published or user.is_authenticated %}

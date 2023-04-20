@@ -25,3 +25,11 @@ class PostDetailView(DetailView):
             return post
         else:
             return Http404
+        
+class CategoryPostListView(ListView):
+    model = Post
+    template_name = "blog/post_list.html"
+
+    def get_queryset(self):
+        
+        return super().get_queryset()
